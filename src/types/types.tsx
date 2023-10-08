@@ -14,3 +14,9 @@ export interface ITodo {
     title:string;
     complated:boolean
 }
+ 
+export interface IComment {
+    id:number;
+    name:string;
+    body:string
+}

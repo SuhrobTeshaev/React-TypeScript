@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import Card, { CardVariant } from './components/Card';
-import { ITodo, IUser } from './types/types';
+import { IComment, ITodo, IUser } from './types/types';
 import axios from 'axios';
-import List from './components/lList';
+import List from './components/List';
 import UserItem from './components/UserItem';
 import TodoItem from './components/TodoItem';
+import CommentItem from './components/CommentItem';
 function App() {
   const [users, setUsers] = useState<IUser[]>([])
   const [todos,setTodos] =useState<ITodo[]>([])
+  const [comments,setComments] =useState<IComment[]>([])
   useEffect(() => {
     fetchUsers()
     fetchTodos()
+    fetchComments()
   }, [])
   async function fetchUsers() {
     try {
@@ -25,6 +28,14 @@ function App() {
     try {
       const res = await axios.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos?_limit=10')
       setTodos(res.data)
+    } catch (e) {
+      alert(e)
+    }
+  }
+  async function fetchComments() {
+    try {
+      const res = await axios.get<IComment[]>('https://jsonplaceholder.typicode.com/comments?_limit=10')
+      setComments(res.data)
     } catch (e) {
       alert(e)
     }
@@ -43,6 +54,10 @@ function App() {
         <List
        items={todos}
         renderItem={(todo:ITodo)=><TodoItem todo={todo} key={todo.id}/>}
+        />
+        <List
+       items={comments}
+        renderItem={(comment:IComment)=><CommentItem comment={comment} key={comment.id}/>}
         />
 
 
