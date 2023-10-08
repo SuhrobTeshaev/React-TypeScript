@@ -8,6 +8,7 @@ const CommentItem: FC<CommentItemProps> = ({comment}) => {
     return (  
         <div style={{border:'1px solid black'}}>
             {comment.id},{comment.name},{comment.body}
+        
         </div>
     );
 }
