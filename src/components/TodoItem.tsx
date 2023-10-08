@@ -7,7 +7,7 @@ interface TodoItemProps {
 const TodoItem:FC<TodoItemProps> = ({todo}) => {
     return ( 
 <div>
-    <input type="checbox" checked={todo.complated}/>
+    <input type="checkbox" checked={todo.complated}/>
     {todo.id},{todo.title}
 </div>
      );
