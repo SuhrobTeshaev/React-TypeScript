@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, {FC} from "react";
 import { IUser } from "../types/types";
 import UserItem from "./UserItem";
 
